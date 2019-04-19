@@ -62,12 +62,3 @@ class Square {
 		}
 	}
 }
-
-function popSquare(x, y)
-{
-	for (let i = 0; i < squares.length; i++)
-	{
-		if (squares[i].xyDansLaBulle(x,y))
-			squares.splice(i,1);
-	}
-}

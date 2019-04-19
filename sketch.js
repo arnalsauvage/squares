@@ -1,16 +1,13 @@
 
-let squares = [];
-let poping = 0;
+let squaresList;
 
 function setup() {
     createCanvas(1200 , 608);
-        let x = random(width);
-        let y = random(height);
-    for (let i = 0; i < 50; i++) {
-        x+=  12;
-        y+=12;
-        squares[i] = new Square(x, y , 20  );
-    }
+    let x = random(width);
+    let y = random(height);
+
+    squaresList = new SquaresList();
+    let poping = 0;
     debug = createCheckbox();
 }
 
@@ -25,8 +22,8 @@ function setupRandom() {
 }
 
 function mousePressed() {
-	popSquare(mouseX, mouseY)
-	poping = window.setInterval("squares.push(new Square(mouseX, mouseY , 20 + random(50 )))",200) ;
+	squaresList.popSquare(mouseX, mouseY)
+	poping = window.setInterval("squaresList.addCarre(new Square(mouseX, mouseY , 20 + random(50 )))",200) ;
 }
 
 function mouseDragged() {
@@ -41,16 +38,12 @@ function mouseReleased() {
 
 function draw() {
   background(0);
-	for (let square of squares){
-		square.move();
-		square.show();
-	}
+    squaresList.move();
+    squaresList.show();
   }
 
-/*
 function preloadUpdate() {
     preloadCount++;
     if (preloadCount === PRELOADTOTAL)
         launchGame();
 }
-*/
